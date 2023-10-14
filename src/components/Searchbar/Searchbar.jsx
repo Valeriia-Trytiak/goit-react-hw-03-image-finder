@@ -6,15 +6,15 @@ export const Searchbar = ({ onSubmit })=> {
     return  <header>
         <Formik
         initialValues={{ searchValue: ""}}
-        onSubmit={(value, actions) => {
-         console.log(value)
-         onSubmit(value);
+        onSubmit={(values, actions) => {
+            const valueSearch = values.searchValue.trim();
+            onSubmit(valueSearch);
             actions.resetForm();
         }}>
         <Form>
         <label htmlFor="searchValue"></label>
         <TbCameraSearch />
-        <Field type="text" name="searchValue" placeholder="Search images and photos" />
+        <Field type="text" name="searchValue" id="searchValue" placeholder="Search images and photos" />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
