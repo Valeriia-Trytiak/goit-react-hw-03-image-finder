@@ -12,10 +12,10 @@ export const Searchbar = ({ onSubmit })=> {
             actions.resetForm();
         }}>
         <Form>
+        <button type="submit">Submit</button>
         <label htmlFor="searchValue"></label>
         <TbCameraSearch />
-        <Field type="text" name="searchValue" id="searchValue" placeholder="Search images and photos" />
-        <button type="submit">Submit</button>
+        <Field type="text" name="searchValue" id="searchValue" placeholder="Search images and photos"  autoComplete="off" autoFocus/>
       </Form>
     </Formik>
     </header>
