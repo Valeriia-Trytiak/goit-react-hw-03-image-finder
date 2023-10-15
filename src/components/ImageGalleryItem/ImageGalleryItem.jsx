@@ -5,7 +5,15 @@ import { GalleryImage, GalleryItem } from './ImageGalleryItem.styled';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  width: '100vw',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
   },
   content: {
     top: '50%',

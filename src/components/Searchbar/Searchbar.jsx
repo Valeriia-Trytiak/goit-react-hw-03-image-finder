@@ -5,7 +5,6 @@ import { Error, HeaderSearchbar, SearchButton, SearchIcon, StyledForm, StyledInp
 const searchSchema = Yup.object().shape({
     searchValue: Yup.string()
       .trim()
-      .required('Enter search value')
       .min(2, 'Minimum length - 2 characters')
       .max(20, 'Maximum length - 20 characters'),
   });
@@ -22,9 +21,10 @@ export const Searchbar = ({ onSubmit })=> {
         validationSchema={searchSchema}
         >
         <StyledForm>
-        <SearchButton type="submit"></SearchButton>
-        <label htmlFor="searchValue"></label>
+        <SearchButton type="submit"> 
         <SearchIcon />
+        </SearchButton>
+        <label htmlFor="searchValue"></label>
         <StyledInput type="text" name="searchValue" id="searchValue" placeholder="Search images and photos"  autoComplete="off" autoFocus/>
         <Error name="searchValue" component="span" />
       </StyledForm>

@@ -7,6 +7,7 @@ import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button.jsx";
 import { fechServisSearchImg } from "../API";
 import { Container } from './Container/Container.styled';
+import { ContainerLoader } from './ContainerLoader/ContainerLoader';
 
 
 export class App extends Component {
@@ -25,7 +26,9 @@ loadMore: false
     this.setState(() => ({
       searchValue: searchName,
       gallery: [],
-      page: 1
+      page: 1,
+      loadMore: false, 
+
     }));
   };
 
@@ -65,13 +68,15 @@ console.log(searchImg)
   <Searchbar onSubmit={this.uppdateSearchbar} />
   {gallery.length > 0 && <ImageGallery galleryImages = {gallery} /> }
 
-  {isLoading && <ColorRing
+  {isLoading && <ContainerLoader>
+  <ColorRing
   visible={true}
   height="80"
   width="80"
   ariaLabel="blocks-loading"
   colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-  />}
+  />
+  </ContainerLoader>}
 
   {loadMore &&  <Button onClickButton ={this.handlerButton}/> } 
 

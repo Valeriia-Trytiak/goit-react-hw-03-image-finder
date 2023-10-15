@@ -49,7 +49,9 @@ export const StyledInput = styled(Field)`
 `;
 
 export const SearchButton = styled.button`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border: 0;
@@ -57,14 +59,27 @@ export const SearchButton = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 export const SearchIcon = styled(TbCameraSearch)`
   position: absolute;
-  top: 9px;
-  left: 6px;
+  top: 10px;
+  left: 10px;
   font-size: 25px;
   color: ${p => p.theme.colors.grey};
+  opacity: 0.6;
+
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.accent};
+    opacity: 1;
+  }
 `;
 
 export const Error = styled(ErrorMessage)`

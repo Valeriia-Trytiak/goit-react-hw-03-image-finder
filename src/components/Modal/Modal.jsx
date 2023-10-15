@@ -10,7 +10,7 @@ export const Modal = ({ isOpen, onRequestClose, style, contentLabel, largeImageU
         style={style}
         contentLabel={contentLabel}
       >
-        <img src={largeImageURL} alt={tags} width="850" height="600" />
+        <img src={largeImageURL} alt={tags} width="850" />
       </ModalComponent>
 );
 
