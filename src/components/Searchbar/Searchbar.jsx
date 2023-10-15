@@ -1,6 +1,6 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { TbCameraSearch } from 'react-icons/tb';
+import { Error, HeaderSearchbar, SearchButton, SearchIcon, StyledForm, StyledInput } from './Searchbar.syuled';
 
 const searchSchema = Yup.object().shape({
     searchValue: Yup.string()
@@ -11,7 +11,7 @@ const searchSchema = Yup.object().shape({
   });
 
 export const Searchbar = ({ onSubmit })=> {
-    return  <header>
+    return  <HeaderSearchbar>
         <Formik
         initialValues={{ searchValue: ""}}
         onSubmit={(values, actions) => {
@@ -21,13 +21,13 @@ export const Searchbar = ({ onSubmit })=> {
         }}
         validationSchema={searchSchema}
         >
-        <Form>
-        <button type="submit">Submit</button>
+        <StyledForm>
+        <SearchButton type="submit"></SearchButton>
         <label htmlFor="searchValue"></label>
-        <TbCameraSearch />
-        <Field type="text" name="searchValue" id="searchValue" placeholder="Search images and photos"  autoComplete="off" autoFocus/>
-        <ErrorMessage name="searchValue" component="span" />
-      </Form>
+        <SearchIcon />
+        <StyledInput type="text" name="searchValue" id="searchValue" placeholder="Search images and photos"  autoComplete="off" autoFocus/>
+        <Error name="searchValue" component="span" />
+      </StyledForm>
     </Formik>
-    </header>
+    </HeaderSearchbar>
 }

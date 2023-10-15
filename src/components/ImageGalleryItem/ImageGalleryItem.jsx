@@ -1,5 +1,6 @@
 import { Modal } from 'components/Modal/Modal';
 import React, { Component } from 'react';
+import { GalleryImage, GalleryItem } from './ImageGalleryItem.styled';
 
 
 const customStyles = {
@@ -14,6 +15,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     border: 'none',
+    backgroundColor: 'transparent',
   },
 };
 
@@ -37,8 +39,8 @@ export class ImageGalleryItem extends Component {
     const { isModalOpen } = this.state;
 
     return (
-      <li key={id}>
-        <img src={webformatURL} alt={tags} loading="lazy" onClick={this.openModal} />
+      <GalleryItem key={id}>
+        <GalleryImage src={webformatURL} alt={tags} loading="lazy" onClick={this.openModal} />
         <Modal
           isOpen={isModalOpen}
           onRequestClose={this.closeModal}
@@ -47,7 +49,7 @@ export class ImageGalleryItem extends Component {
           largeImageURL={largeImageURL}
           tags={tags}
         />
-      </li>
+      </GalleryItem>
     );
   }
 }

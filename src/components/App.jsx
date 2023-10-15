@@ -6,8 +6,11 @@ import { Searchbar } from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button.jsx";
 import { fechServisSearchImg } from "../API";
-export class App extends Component {
+import { Container } from './Container/Container.styled';
 
+
+export class App extends Component {
+  
 state= {
 gallery:[],
 searchValue:"",
@@ -58,7 +61,7 @@ console.log(searchImg)
   render () {
     const { gallery, isLoading, error, loadMore }= this.state;
 
-  return <div>
+  return <Container>
   <Searchbar onSubmit={this.uppdateSearchbar} />
   {gallery.length > 0 && <ImageGallery galleryImages = {gallery} /> }
 
@@ -74,6 +77,6 @@ console.log(searchImg)
 
   {error && <span>Whoops... Error! Please, reload this page!</span>}
   <Toaster  position="top-right" /> 
-  </div>
+  </Container>
   } 
 };
