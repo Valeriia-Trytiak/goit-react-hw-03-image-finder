@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
+// import React, { Component } from 'react';
+// import Modal from 'react-modal';
 
 // const customStyles = {
 //     content: {
@@ -18,7 +18,7 @@ import Modal from 'react-modal';
   
 export const ImageGalleryItem = ({ searchImage })=> {
 
-const { id, webformatURL, tags, largeImageURL } = searchImage;
+const { id, webformatURL, tags } = searchImage;
 return <li key={id}>
 <img src={webformatURL} alt={tags} loading="lazy" />
 {/* <Modal
