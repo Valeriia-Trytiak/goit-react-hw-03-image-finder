@@ -14,34 +14,33 @@ searchValue:"",
 page: 1,
 isLoading: false,
 error: false
-
 }
-// Записую до стану значення пошуку
-uppdateSearchbar = (searchName)=> {
-  this.setState(() => ({
-    searchValue: searchName,
-  }));
-};
 
+// Записую до стану значення пошуку, скидаю поточну сторінку та масив зображень
+  uppdateSearchbar = (searchName)=> {
+    this.setState(() => ({
+      searchValue: searchName,
+      gallery: [],
+      page: 1
+    }));
+  };
+
+//При кліку по Завантажити ще, змінюю стейт
 handlerButton = ()=> {
-  console.log("нажала кнопку")
-  this.setState(prevState => prevState.page + 1)
-  console.log(this.state.page)
+  this.setState(prevState => ({ page: prevState.page + 1 }));
 }
 
 async componentDidUpdate(prevProps, prevState) {
+  const { searchValue, page } = this.state;
   try {
-    if (
-      prevState.searchValue !== this.state.searchValue &&
-      this.state.searchValue !== null &&
-      this.state.searchValue !== undefined || 
-      prevState.page !== this.state.page
-    ) {
+      if ((prevState.searchValue !== searchValue && searchValue) || page !== prevState.page) {
+
       this.setState({ isLoading: true, error: false });
-      const searchImg = await fechServisSearchImg(this.state.searchValue, this.state.page);
+      const searchImg = await fechServisSearchImg(searchValue, page);
       toast.success("Images found successfully!")
+
       this.setState({
-        gallery: searchImg.hits,
+        gallery: page === 1 ? searchImg.hits : [...prevState.gallery, ...searchImg.hits],
         isLoading: false, 
         error: false,
       });
@@ -68,7 +67,7 @@ async componentDidUpdate(prevProps, prevState) {
   {error && <span>Whoops... Error! Please, reload this page!</span>}
 
   {gallery.length > 0 && <ImageGallery galleryImages = {gallery} /> }
-  <Button onClickButton ={this.handlerButton} />
+  {gallery.length > 0 &&  <Button onClickButton ={this.handlerButton}/> } 
   <Toaster  position="top-right" /> 
   </div>
   } 
